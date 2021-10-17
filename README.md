@@ -61,6 +61,9 @@ module.exports = {
   output: {
     filename: "bundle.[fullhash].js",
   },
+  resolve: {
+    extensions: [".js", ".jsx"],
+  },
 };
 ```
 
@@ -70,6 +73,8 @@ module.exports = {
 - `entry`: 어플리케이션 진입점을 설정.
 - `output`: 번들된 파일을 저장할 경로 설정.
   - `filename`: 번들된 파일의 이름 설정. `[fullhash]`는 웹팩에서 생성한 해시를 사용한다.
+- `resolve`: 모듈을 해석하는 방식을 설정한다.
+  - `extensions`: 명시하는 확장자를 순서대로 해석한다. 사용자가 `import`할 때 확장자를 생략할 수 있도록 해준다. (default 설정은 jsx를 명시하지 않아 오류가 발생한다.)
 
 --
 
@@ -95,7 +100,7 @@ module: {
 --
 
 ```bash
-npm i -D babel-loader html-loader
+$ npm i -D babel-loader html-loader
 ```
 
 - `babel-loader`: 바벨을 웹팩에서 사용할 수 있도록 해준다.
@@ -253,3 +258,5 @@ export default App;
 
 - 정상적으로 결과물이 빌드되는지 확인할 수 있도록 파일을 간단히 작성한다.
 - script 명령어 `$ npm start`로 테스트할 수 있다.
+
+FIN.
